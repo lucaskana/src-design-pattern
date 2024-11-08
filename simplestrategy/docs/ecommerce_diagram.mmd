@@ -2,30 +2,38 @@ classDiagram
     class Context {
         -Strategy strategy
         +setStrategy(strategy)
-        +doSomething()
+        +execute()
     }
 
-    class Strategy {
+    class AddToCartStrategy {
         <<Interface>>
-        +execute(data)
+        +addToCart(data)
     }
 
-    class ConcreteStrategy {
-        +execute(data)
+    class ProdutoVarejoAddToCartStrategy {
+        +addToCart(data)
     }
-
+    class ServicoFibraAddToCartStrategy {
+        +addToCart(data)
+    }
+    class ServicoTelefoniaAddToCartStrategy {
+        +addToCart(data)
+    }
     class Client {
-        +String featureDetails
-        +requestApproval()
     }
 
-    Context o-- Strategy
-    Client ..>	ConcreteStrategy
+    Context o-- AddToCartStrategy
+    Client ..>	AddToCartStrategy
     Client -->	Context
-    ConcreteStrategy ..|> Strategy
+    ProdutoVarejoAddToCartStrategy ..|> AddToCartStrategy
+    ServicoFibraAddToCartStrategy ..|> AddToCartStrategy
+    ServicoTelefoniaAddToCartStrategy ..|> AddToCartStrategy
+
 
     style ConcreteStrategy fill:#bfb,stroke:#6f6,stroke-width:2px,color:#000,stroke-dasharray: 5 5
     style Strategy fill:#9ff,stroke:#369,stroke-width:2px,color:#000,stroke-dasharray: 5 5
     style Context fill:#ffb,stroke:#663,stroke-width:2px,color:#000,stroke-dasharray: 5 5
     style Client fill:#ffb,stroke:#663,stroke-width:2px,color:#000,stroke-dasharray: 5 5
-    style Context fill:#bfb,stroke:#6f6,stroke-width:2px,color:#000,stroke-dasharray: 5 5
+    style ProdutoVarejoAddToCartStrategy fill:#bfb,stroke:#6f6,stroke-width:2px,color:#000,stroke-dasharray: 5 5
+    style ServicoFibraAddToCartStrategy fill:#bfb,stroke:#6f6,stroke-width:2px,color:#000,stroke-dasharray: 5 5
+    style ServicoTelefoniaAddToCartStrategy fill:#bfb,stroke:#6f6,stroke-width:2px,color:#000,stroke-dasharray: 5 5
